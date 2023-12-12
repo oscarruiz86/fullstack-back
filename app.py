@@ -38,6 +38,6 @@ def crearPedido(pedidos):
             file.write("")
             file.close()     
             for pedido in pedidos:
-            print(pedido["nombre"],pedido["apellidos"])
-            guardar_pedido(pedido["nombre"],pedido["apellidos"])
+                  print(pedido["nombre"],pedido["apellidos"])
+                  guardar_pedido(pedido["nombre"],pedido["apellidos"])
 
