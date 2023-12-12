@@ -16,7 +16,7 @@ def pedido():
     apellido = request.form['ApellidoCliente']
     pedidos = []
     pedidos.append({"nombre": nombre, "apellidos":apellido})
-    crearPedido(pedidos)
+    crear_pedido(pedidos)
     return redirect("http://127.0.0.1:5500/solicita_pedido.html", code=302)
 @app.route("/checksize",methods=['POST'])
 def checksize():
@@ -28,9 +28,9 @@ def checksize():
     """
     data = json.loads(request.data)
     tamanioPizza = data.get("tamanioPizza",None)
-    mensaje = "No disponible" if tamanioPizza.lower() == "s" else "Disponible"
+    mensaje = "No disponible" if tamanio_pizza.lower() == "s" else "Disponible"
     return json.dumps({'mensaje':mensaje}), 200, {'ContentType':'application/json'}  
-def crearPedido(pedidos):
+def crear_pedido(pedidos):
     """
     crear Pedido
     """
