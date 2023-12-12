@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route("/pizza",methods=['GET', 'POST'])
-    def iniciar_pedido():
+def iniciar_pedido():
     """
     pedido
     """
