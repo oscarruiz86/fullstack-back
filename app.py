@@ -2,7 +2,7 @@
 App
 """
 import json
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, Response
 from flask_cors import CORS
 from persistencia import guardar_pedido
 
@@ -22,16 +22,19 @@ def iniciar_pedido():
     return redirect("http://127.0.0.1:5500/solicita_pedido.html", code=302)
 @app.route("/checksize",methods=['POST'])
 def checksize():
-    """
-    Comprueba disponibilidad de un tamaño de pizza.
-    Aquí va el código Python. Debe capturar el parámetro "size" de la request. Debe
-    retornar siempre "Disponible", excepto para el tamaño "S" que debe retornar "No
-    disponible" y se debe asignar en mensaje, así mensaje = "Lo que corresponda"
-    """
-    data = json.loads(request.data)
-    tamanio_pizza = data.get("tamanioPizza",None)
-    mensaje = "No disponible" if tamanio_pizza.lower() == "s" else "Disponible"
-    return json.dumps({'mensaje':mensaje}), 200, {'ContentType':'application/json'}
+      """
+      Comprueba disponibilidad de un tamaño de pizza.
+      Aquí va el código Python. Debe capturar el parámetro "size" de la request. Debe
+      retornar siempre "Disponible", excepto para el tamaño "S" que debe retornar "No
+      disponible" y se debe asignar en mensaje, así mensaje = "Lo que corresponda"
+      """
+      data = json.loads(request.data)
+      tamanio_pizza = data.get("tamanioPizza",None)
+      mensaje = "No disponible" if tamanio_pizza.lower() == "s" else "Disponible"
+      tamanio_pizza = data.get("tamanioPizza",None)
+      return Response(json.dumps({'mensaje':mensaje}), 200, {'Access-Control-Allow-Origin': '*','ContentType':'application/json'})
+    #return json.dumps({'mensaje':mensaje}), 200, {'ContentType':'application/json'}
+
 def crear_pedido(pedidos):
     """
     crear Pedido
