@@ -7,7 +7,7 @@ from flask import Flask, redirect, request
 from persistencia import guardar_pedido
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
 @app.route("/pizza",methods=['GET', 'POST'])
 def iniciar_pedido():
