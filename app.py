@@ -1,3 +1,6 @@
+"""
+App
+"""
 import json
 from persistencia import guardar_pedido
 from flask import Flask, Response, redirect, request
@@ -24,8 +27,8 @@ def checksize():
     disponible" y se debe asignar en mensaje, así mensaje = "Lo que corresponda"
     """
     data = json.loads(request.data)
-    tamanioPizza =  data.get("tamanioPizza",None)
-    mensaje = "No disponible" if  tamanioPizza.lower() == "s"  else "Disponible"
+    tamanioPizza = data.get("tamanioPizza",None)
+    mensaje = "No disponible" if tamanioPizza.lower() == "s" else "Disponible"
     return json.dumps({'mensaje':mensaje}), 200, {'ContentType':'application/json'}  
 def crearPedido(pedidos):
     """
