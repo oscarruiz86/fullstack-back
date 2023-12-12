@@ -8,9 +8,9 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route("/pizza",methods=['GET', 'POST'])
-def pedido():  
+def pedido():
       nombre = request.form['NombreCliente']
-      apellido = request.form['ApellidoCliente']   
+      apellido = request.form['ApellidoCliente']
       pedidos = []
       pedidos.append({"nombre": nombre, "apellidos":apellido})
       crearPedido(pedidos)
@@ -34,10 +34,10 @@ def crearPedido(pedidos):
       """
       crear Pedido
       """
-      with open("pedidos.txt", "w", encoding="utf-8") as file:        
+      with open("pedidos.txt", "w", encoding="utf-8") as file:
             file.write("")
             file.close()     
-      for pedido in pedidos:
+            for pedido in pedidos:
             print(pedido["nombre"],pedido["apellidos"])
             guardar_pedido(pedido["nombre"],pedido["apellidos"])
 
