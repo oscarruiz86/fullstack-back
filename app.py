@@ -21,6 +21,7 @@ def iniciar_pedido():
     pedidos.append({"nombre": nombre, "apellidos":apellido})
     crear_pedido(pedidos)
     return redirect("http://127.0.0.1:5500/solicita_pedido.html", code=302)
+    
 @app.route("/checksize",methods=['POST'])
 def checksize():
     """
@@ -33,6 +34,7 @@ def checksize():
     tamanio_pizza = data.get("tamanioPizza",None)
     mensaje = "No disponible" if tamanio_pizza.lower() == "s" else "Disponible"
     return json.dumps({'mensaje':mensaje}), 200, {'ContentType':'application/json'}  
+
 def crear_pedido(pedidos):
     """
     crear Pedido
@@ -41,6 +43,5 @@ def crear_pedido(pedidos):
         file.write("")
         file.close()
         for pedido in pedidos:
-              print(pedido["nombre"],pedido["apellidos"])
-              guardar_pedido(pedido["nombre"],pedido["apellidos"])
-
+            print(pedido["nombre"],pedido["apellidos"])
+            guardar_pedido(pedido["nombre"],pedido["apellidos"])
