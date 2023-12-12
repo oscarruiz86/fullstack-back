@@ -11,7 +11,10 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route("/pizza",methods=['GET', 'POST'])
-def pedido():
+def iniciar_pedido():
+      """
+      pedido
+      """
     nombre = request.form['NombreCliente']
     apellido = request.form['ApellidoCliente']
     pedidos = []
@@ -27,7 +30,7 @@ def checksize():
     disponible" y se debe asignar en mensaje, así mensaje = "Lo que corresponda"
     """
     data = json.loads(request.data)
-    tamanioPizza = data.get("tamanioPizza",None)
+    tamanio_pizza = data.get("tamanioPizza",None)
     mensaje = "No disponible" if tamanio_pizza.lower() == "s" else "Disponible"
     return json.dumps({'mensaje':mensaje}), 200, {'ContentType':'application/json'}  
 def crear_pedido(pedidos):
@@ -36,7 +39,7 @@ def crear_pedido(pedidos):
     """
     with open("pedidos.txt", "w", encoding="utf-8") as file:
         file.write("")
-        file.close()     
+        file.close()
         for pedido in pedidos:
               print(pedido["nombre"],pedido["apellidos"])
               guardar_pedido(pedido["nombre"],pedido["apellidos"])
