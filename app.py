@@ -2,8 +2,8 @@
 App
 """
 import json
+from flask_cors import CORS
 from flask import Flask, redirect, request
-# from flask_cors import CORS
 from persistencia import guardar_pedido
 
 app = Flask(__name__)
