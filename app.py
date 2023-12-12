@@ -11,10 +11,10 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route("/pizza",methods=['GET', 'POST'])
-def iniciar_pedido():
-      """
-      pedido
-      """
+    def iniciar_pedido():
+    """
+    pedido
+    """
     nombre = request.form['NombreCliente']
     apellido = request.form['ApellidoCliente']
     pedidos = []
