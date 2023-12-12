@@ -9,12 +9,12 @@ CORS(app)
 
 @app.route("/pizza",methods=['GET', 'POST'])
 def pedido():
-      nombre = request.form['NombreCliente']
-      apellido = request.form['ApellidoCliente']
-      pedidos = []
-      pedidos.append({"nombre": nombre, "apellidos":apellido})
-      crearPedido(pedidos)
-      return redirect("http://127.0.0.1:5500/solicita_pedido.html", code=302)
+    nombre = request.form['NombreCliente']
+    apellido = request.form['ApellidoCliente']
+    pedidos = []
+    pedidos.append({"nombre": nombre, "apellidos":apellido})
+    crearPedido(pedidos)
+    return redirect("http://127.0.0.1:5500/solicita_pedido.html", code=302)
 
 @app.route("/checksize",methods=['POST'])
 def checksize():
