@@ -1,11 +1,11 @@
 import json
 from persistencia import guardar_pedido
 from flask import Flask, Response, redirect, request
-from flask_cors import CORS, cross_origin
+# from flask_cors import CORS, cross_origin
 
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 @app.route("/pizza",methods=['GET', 'POST'])
 def pedido():  
